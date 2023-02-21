@@ -15,17 +15,21 @@
 
     <section class="ftco-section">
     	<div class="container">
+		
     		<div class="row justify-content-center">
     			<div class="col-md-10 mb-5 text-center">
     				<ul class="product-category">
-    					<li><a href="#" class="active">All</a></li>
-    					<li><a href="#">Skin</a></li>
-    					<li><a href="#">Nails</a></li>
+    					<li><a href="" class="active">All</a></li>
+						@foreach($cate as $c)
+    					<li><a href="product_category/{{$c->id}}">{{$c->cate_name}}</a></li>
+						@endforeach
+    					<!-- <li><a href="#">Nails</a></li>
     					<li><a href="#">Spa</a></li>
-    					<li><a href="#">Makeup</a></li>
+    					<li><a href="#">Makeup</a></li> -->
     				</ul>
     			</div>
     		</div>
+			
     		<div class="row">
 			@foreach($data as $d)
     			<div class="col-md-6 col-lg-3 ftco-animate">

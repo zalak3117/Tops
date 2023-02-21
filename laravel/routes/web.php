@@ -84,8 +84,10 @@ Route::get('/cart',[cartController::class,'manage_cart']);
 Route::get('/delete_cart/{id}',[cartController::class,'delete_cart']);
 //Route::post('/detail_product/{id}',[cartController::class,'update_cart']);
 Route::get('/detail_product/{id}',[productController::class,'detail_product']);
+Route::get('/product_category/{id}',[productController::class,'product_category']);
 
 Route::post('/shop/{id}',[cartController::class,'add_cart']);
+
 
 Route::post('/contact',[contactController::class,'add_contact']);
 

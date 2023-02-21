@@ -26,10 +26,23 @@ class productController extends Controller
     
 
     public function viewall()
-    {        
-	   $product=product::all();	  // select * from
-       return view('frontend.shop',['data'=>$product]);
+    {     
+        // $product=product::join('categories','products.cate_id','=','categories.id')
+		// ->get(['products.*','categories.cate_name']);   
+	   $product=product::all();	 
+       $category=category::all();	 // select * from
+       return view('frontend.shop',['data'=>$product, 'cate'=>$category]);
+       
     }
+
+    public function product_category($cid)
+    {     
+       
+       $data=product::where("cate_id",'=',$cid);
+       return view('frontend.product_category',['fetch'=>$data]);
+       
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -87,6 +87,7 @@ Route::get('/detail_product/{id}',[productController::class,'detail_product']);
 Route::get('/product_category/{id}',[productController::class,'product_category']);
 
 Route::post('/shop/{id}',[cartController::class,'add_cart']);
+Route::post('/shop/{id}',[cartController::class,'add_wishlist']);
 
 
 Route::post('/contact',[contactController::class,'add_contact']);

@@ -37,15 +37,33 @@ class musicController extends Controller
         $data->company_name=$request->company_name;
         $data->singer_name=$request->singer_name;        
 				
-		// img upload
+		
 		$music_file=$request->file('music_file');		
 		$music_filename=time().'_music.'.$request->file('music_file')->getClientOriginalExtension();
-		$music_file->move('backend/music',$music_filename);  // use move for move image in public/images
-		$data->music_file=$music_filename; // name store in db
+		$music_file->move('backend/music',$music_filename);  
+		$data->music_file=$music_filename;
+
+        $music_img=$request->file('music_img');		
+		$music_imgname=time().'_img.'.$request->file('music_img')->getClientOriginalExtension();
+		$music_img->move('backend/musicimg',$music_imgname);  
+		$data->music_img=$music_imgname; 
 
         $data->save();
 		Alert::success('success', 'Music Added Successfully');
 		return back();
+    }
+
+    function manage_music()
+	{
+		$music=music::all();
+        return view('backend.manage_music',['fetch'=>$music]);
+	}
+
+    public function viewall()
+    {    	 
+       $music=music::all();	 
+       return view('frontend.index',['data'=>$music]);
+       
     }
 
     /**

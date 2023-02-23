@@ -38,7 +38,7 @@ class productController extends Controller
     public function product_category($cid)
     {     
        
-       $data=product::where("cate_id",'=',$cid);
+       $data=product::where("cate_id",'=',$cid)->first();
        return view('frontend.product_category',['fetch'=>$data]);
        
     }

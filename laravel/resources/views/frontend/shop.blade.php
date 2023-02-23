@@ -60,6 +60,17 @@
 			<a>	<button class="cartbtn"><i class="ion-ios-cart"></i></button> </a>
 			</div>
 </form>
+
+<form action="{{url('shop/'.$d->id)}}" method="post" enctype="multipart/form-data">
+            @csrf
+			<input type="hidden" id="cust_id" name="cust_id" value="{{session('cust_id')}}">
+			<input type="hidden" id="prod_id" name="prod_id" value="{{$d->id}}">
+			<input type="hidden" id="qty" name="qty" value="1">
+
+			<div class="m-auto d-flex">
+			<a>	<button class="cartbtn"><i class="ion-ios-heart"></i></button> </a>
+			</div>
+</form>
     							</div>
     						</div>
 

@@ -28,6 +28,10 @@ Route::get('/all_music', function () {
     return view('frontend.all_music');
 });
 
+Route::get('/single_music', function () {
+    return view('frontend.single_music');
+});
+
 Route::get('/login', function () {
     return view('frontend.login');
 });
@@ -48,8 +52,12 @@ Route::get('/signup', function () {
     return view('backend.signup');
 });
 
+Route::get('/signin', function () {
+    return view('backend.signin');
+});
 
-Route::get('/index',[musicController::class,'viewall']);
+
+Route::get('/all_music',[musicController::class,'viewall']);
 Route::post('/register',[listenerController::class,'register']);
 Route::post('/login',[listenerController::class,'login']);
 

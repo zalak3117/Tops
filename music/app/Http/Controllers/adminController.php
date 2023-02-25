@@ -31,7 +31,7 @@ class adminController extends Controller
 
         $data->save();
 		Alert::success('success', 'Registration Successfully Done');
-		return back();
+		return redirect('/signin');
     }
 
     function signin(Request $request)
@@ -50,7 +50,7 @@ class adminController extends Controller
 					session()->put('email',$data->email);
 					Alert::success('Congrats', 'You\'ve Successfully Login');
 					
-					return redirect('/index');
+					return redirect('/dashboard');
 				
 			}
 			else

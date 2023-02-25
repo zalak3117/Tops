@@ -59,10 +59,16 @@ class musicController extends Controller
         return view('backend.manage_music',['fetch'=>$music]);
 	}
 
+    public function edit_music($id)
+    {
+        $data=music::where("id",'=',$id)->first();
+		return view('backend.edit_music',['fetch'=>$data]);
+    }
+
     public function viewall()
     {    	 
        $music=music::all();	 
-       return view('frontend.index',['data'=>$music]);
+       return view('frontend.all_music  ',['data'=>$music]);
        
     }
 

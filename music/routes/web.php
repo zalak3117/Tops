@@ -40,6 +40,10 @@ Route::get('/register', function () {
     return view('frontend.register');
 });
 
+Route::get('/profile', function () {
+    return view('frontend.profile');
+});
+
 Route::get('/dashboard', function () {
     return view('backend.dashboard');
 });
@@ -57,13 +61,21 @@ Route::get('/signin', function () {
 });
 
 
+
+
 Route::get('/all_music',[musicController::class,'viewall']);
 Route::post('/register',[listenerController::class,'register']);
 Route::post('/login',[listenerController::class,'login']);
+Route::get('/profile',[listenerController::class,'profile']);
+Route::get('/edit_profile/{id}',[listenerController::class,'edit_profile']);
+Route::post('/edit_profile/{id}',[listenerController::class,'update_profile']);
 
 
 Route::post('/signup',[adminController::class,'signup']);
 Route::post('/signin',[adminController::class,'signin']);
 Route::post('/add_music',[musicController::class,'add_music']);
 Route::get('/manage_music',[musicController::class,'manage_music']);
+Route::get('/edit_music/{id}',[musicController::class,'edit_music']);
+Route::post('/edit_music/{id}',[musicController::class,'update_music']);
+Route::get('/delete_music/{id}',[musicController::class,'delete_music']);
 

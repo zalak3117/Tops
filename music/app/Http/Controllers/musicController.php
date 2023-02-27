@@ -65,6 +65,52 @@ class musicController extends Controller
 		return view('backend.edit_music',['fetch'=>$data]);
     }
 
+    public function update_music(Request $request, $id)
+    {
+        $data=music::find($id);
+        $data->music_name=$request->music_name;
+        $data->movie_album=$request->movie_album;
+        $data->company_name=$request->company_name;
+        $data->singer_name=$request->singer_name;
+       
+        $old_img=$data->music_img;
+		if($request->hasFile('music_img'))
+        {
+            $music_img=$request->file('music_img');		
+            $music_imgname=time().'_img.'.$request->file('music_img')->getClientOriginalExtension();
+            $music_img->move('backend/musicimg/',$music_imgname);  // use move for move image in public/images
+            $data->music_img=$music_imgname; // name store in db
+            unlink('backend/musicimg/'.$old_img);
+        }
+
+        $old_music=$data->music_file;
+		if($request->hasFile('music_file'))
+        {
+            $music_file=$request->file('music_file');		
+            $music_filename=time().'_music.'.$request->file('music_file')->getClientOriginalExtension();
+            $music_file->move('backend/music/',$music_filename);  // use move for move image in public/images
+            $data->music_file=$music_filename; // name store in db
+            unlink('backend/music/'.$old_music);
+        }
+
+        $data->update();
+		Alert::success('success', 'Update Success');
+		return redirect('/manage_music');
+
+    }
+
+    public function delete_music($id)
+    {
+        $data=music::find($id);
+        $old_img=$data->music_img;
+        $old_music=$data->music_file;
+		$data->delete();
+        unlink('backend/musicimg/'.$old_img);
+        unlink('backend/music/'.$old_music);
+		Alert::success('success', 'Delete Success');
+		return back();
+    }
+
     public function viewall()
     {    	 
        $music=music::all();	 

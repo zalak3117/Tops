@@ -6,6 +6,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\listener;
+use App\Mail\welcomemail;
+use Mail;
 use Alert;
 use Hash;
 
@@ -34,10 +36,14 @@ class listenerController extends Controller
     {
         $data=new listener;
 		$data->name=$request->name;
-        $data->email=$request->email;
+        $email= $data->email=$request->email;
         $data->password=Hash::make($request->password);
 
         $data->save();
+        $data=['msg'=>"Registration Success", 'sub'=>"Welcome To Music"];
+		
+		Mail::to($email)->send(new welcomemail($data));
+
 		Alert::success('success', 'Registration Successfully Done');
 		return back();
     }
@@ -74,6 +80,43 @@ class listenerController extends Controller
 		}	
 		
 	}
+
+    public function profile()
+    {
+        
+        $data=listener::where("id",'=',session('id'))->first();
+		return view('frontend.profile',['fetch'=>$data]);
+    }
+
+    public function edit_profile($id)
+    {
+        $data=listener::where("id",'=',$id)->first();
+		return view('frontend.edit_profile',['fetch'=>$data]);
+    }
+
+    public function update_profile(Request $request, $id)
+    {
+        $data=listener::find($id);
+		$data->name=$request->name;
+        $data->email=$request->email;
+        $data->mobile=$request->mobile;	
+
+        $old_file=$data->image;
+		if($request->hasFile('image'))
+        {
+            $image=$request->file('image');		
+            $imagename=time().'_img.'.$request->file('image')->getClientOriginalExtension();
+            $image->move('frontend/photo/',$imagename);  // use move for move image in public/images
+            $data->image=$imagename; // name store in db
+            //unlink('frontend/image/'.$old_file);
+        }
+
+        $data->update();
+
+		Alert::success('success', 'Update Success');
+		return redirect('/profile');
+
+    }
 
 
     /**

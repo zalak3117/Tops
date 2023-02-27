@@ -64,9 +64,13 @@
                                 <ul>
                                     <li><a href="index">Home</a></li>
                                     <li><a href="all_music">Music</a></li>
+                                    <li><a href="profile">Profile</a></li>
                                     <li><a href="contact.html">Contact</a></li>
+                                
+                                @if(session()->has('id'))
+                               <li> <a>Welcome {{session('name')}}..! </a></li>
+                                @endif
                                 </ul>
-
                                 <!-- Login/Register & Cart Button -->
                                 <div class="login-register-cart-button d-flex align-items-center">
                                     <!-- Login/Register -->

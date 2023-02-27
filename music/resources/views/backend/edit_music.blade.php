@@ -15,7 +15,7 @@
                                     <div class="card-header">
                                         <strong>Add</strong> New Music
                                     </div>
-                                    <form action="{{url('/edit_music')}}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                    <form action="{{url('edit_music/'.$fetch->id)}}" method="post" enctype="multipart/form-data" class="form-horizontal">
                                         @csrf
                                     <div class="card-body card-block">
                                         
@@ -66,12 +66,13 @@
                                                 </div>
                                                 <div class="col-12 col-md-8">
                                                     <input type="file"  name="music_file" class="form-control">
+                                                    <audio controls src="{{url('backend/music/'.$fetch->music_file)}}">
                                                 </div>
                                             </div>
                                         
                                     </div>
                                     <div class="card-footer">
-                                    <button class="btn btn-info" type="submit">Submit</button>                                     </button>
+                                    <button class="btn btn-info" type="submit" name="submit">Update</button>                                     </button>
                                         <!-- <button type="reset" class="btn btn-danger btn-sm">
                                             <i class="fa fa-ban"></i> Reset
                                         </button> -->

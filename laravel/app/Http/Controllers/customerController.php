@@ -78,7 +78,7 @@ class customerController extends Controller
     }
 
     public function profile()
-    {
+    { 
         
         $data=customer::where("id",'=',session('cust_id'))->first();
 		return view('frontend.profile1',['fetch'=>$data]);

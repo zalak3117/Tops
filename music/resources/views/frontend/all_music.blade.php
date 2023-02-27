@@ -57,7 +57,7 @@
                             </a>
 
                             <p>{{$d->movie_album}}</p>
-                            <p>{{$d->music_file}}</p>
+                            <p>{{$d->singer_name}}</p>
                         </div>
                     </div>
                 </div>

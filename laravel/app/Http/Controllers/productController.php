@@ -115,7 +115,7 @@ class productController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
+     */ 
     public function edit_product($id)
     {
         $category=category::all();
@@ -170,7 +170,7 @@ class productController extends Controller
                 }
                 $data->multi_img=implode(',',$multi_imgarr);
             }
-         unlink('backend/assets/img/upload/product/'.$old_multifile);
+         
         }
 
 

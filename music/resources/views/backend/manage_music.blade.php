@@ -48,12 +48,12 @@
                                                 <td>
                                                     <div class="table-data-feature">
                                                         
-                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                    <a href="edit_music/{{$d->id}}"> <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                                             <i class="zmdi zmdi-edit"></i>
-                                                        </button>
-                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                        </button> </a>
+                                                        <a href="delete_music/{{$d->id}}"><button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                                             <i class="zmdi zmdi-delete"></i>
-                                                        </button>
+                                                        </button></a>
                                                     </div>
                                                 </td>
                                             </tr>

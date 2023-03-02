@@ -3,7 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-//use App\Models\cart;
+use Illuminate\Pagination\Paginator;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,16 +25,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // $cart=cart::where('cust_id','=',session('cust_id'))->get();
-        // $total=count($cart);
-        // View::share('total',$total);
-        
-        // view()-> composer(
-        //     'layout.header',
-        //     function($view) {
-        //         $view->with('cart', cart::all());
-        //     }
-        // );
-       
+        Paginator::useBootstrapThree();       
     }
 }

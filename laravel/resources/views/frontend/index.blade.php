@@ -509,9 +509,7 @@
 				<div class="col-sm ftco-animate">
     				<a href="#" class="partner"><img src="{{url('frontend/images/logo6.png')}}" class="img-fluid" alt="Colorlib Template"></a>
     			</div>
-				<div class="col-sm ftco-animate">
-    				<a href="#" class="partner"><img src="{{url('frontend/images/logo6.png')}}" class="img-fluid" alt="Colorlib Template"></a>
-    			</div>	
+					
     		</div>
     	</div>
     </section>

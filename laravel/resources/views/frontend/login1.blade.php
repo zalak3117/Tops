@@ -21,7 +21,7 @@
           <div class="col-md-2">
           </div>
           <div class="col-md-8 order-md-last d-flex">
-            <form action="{{url('/login1')}}" class="bg-white p-5 contact-form" method="post" enctype="multipart/form-data" style="background-image: url({{url('frontend/images/form1.jpg')}});">
+            <form action="{{url('/login1')}}" class="bg-white p-5 contact-form" method="post" enctype="multipart/form-data">
             @csrf
               <div class="form-group">
                 <input type="text" name="email" class="form-control" placeholder="Your Email">

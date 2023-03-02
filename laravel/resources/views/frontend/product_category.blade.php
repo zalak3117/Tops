@@ -19,20 +19,19 @@
     		<div class="row justify-content-center">
     			<div class="col-md-10 mb-5 text-center">
     				<ul class="product-category">
-    					<li><a href="" class="active">All</a></li>
-				
-    					<!-- <li><a href="#">Nails</a></li>
-    					<li><a href="#">Spa</a></li>
-    					<li><a href="#">Makeup</a></li> -->
+    					<li><a href="{{url('/shop')}}" class="">All</a></li>
+						@foreach($cate as $c)
+    					<li> <a href="{{url('/product_category/'.$c->id)}}">{{$c->cate_name}}</a></li>
+    					@endforeach
     				</ul>
     			</div>
     		</div>
 			
     		<div class="row">
-			
+			@foreach($fetch as $fetch)
     			<div class="col-md-6 col-lg-3 ftco-animate">
     				<div class="product">
-    					<a href="{{url('product_category/'.$fetch->id)}}" class="img-prod"><img class="img-fluid" src="{{url('backend/assets/img/upload/product/'.$fetch->prod_image)}}" alt="{{$fetch->prod_name}}">
+    					<a href="{{url('detail_product/'.$fetch->id)}}" class="img-prod"><img class="img-fluid" src="{{url('backend/assets/img/upload/product/'.$fetch->prod_image)}}" alt="{{$fetch->prod_name}}">
     						<span class="status">{{$fetch->status}}</span>
     						<div class="overlay"></div>
     					</a>
@@ -43,40 +42,32 @@
 		    						<p class="price"><span class="mr-2 price-dc">₹{{$fetch->main_price}}</span><span class="price-sale">₹{{$fetch->dis_price}}</span></p>
 		    					</div>
 	    					</div>
-							
-							
-
 	    					<div class="bottom-area d-flex px-3">
 	    						<div class="m-auto d-flex">
-								<form action="#" method="post" enctype="multipart/form-data">
-            @csrf
-			<input type="hidden" id="cust_id" name="cust_id" value="{{session('cust_id')}}">
-			<input type="hidden" id="prod_id" name="prod_id" value="{{$fetch->id}}">
-			<input type="hidden" id="qty" name="qty" value="1">
+									<form action="{{url('shop/'.$fetch->id)}}" method="post" enctype="multipart/form-data">
+           							 @csrf
+										<input type="hidden" id="cust_id" name="cust_id" value="{{session('cust_id')}}">
+										<input type="hidden" id="prod_id" name="prod_id" value="{{$fetch->id}}">
+										<input type="hidden" id="qty" name="qty" value="1">
 
-			<div class="m-auto d-flex">
-			<a>	<button class="cartbtn"><i class="ion-ios-cart"></i></button> </a>
-			</div>
-</form>
+										<div class="m-auto d-flex">
+											<a>	<button class="cartbtn"><i class="ion-ios-cart"></i></button> </a>
+										</div>
+									</form>
     							</div>
     						</div>
 
     					</div>
     				</div>
     			</div>
+			@endforeach
 				
     		</div>
     		<div class="row mt-5">
           <div class="col text-center">
             <div class="block-27">
               <ul>
-                <li><a href="#">&lt;</a></li>
-                <li class="active"><span>1</span></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&gt;</a></li>
+                <li>{{ $prod->links()}}</li>
               </ul>
             </div>
           </div>

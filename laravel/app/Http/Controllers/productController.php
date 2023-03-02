@@ -26,20 +26,19 @@ class productController extends Controller
     
 
     public function viewall()
-    {     
-        // $product=product::join('categories','products.cate_id','=','categories.id')
-		// ->get(['products.*','categories.cate_name']);   
-	   $product=product::all();	 
-       $category=category::all();	 // select * from
-       return view('frontend.shop',['data'=>$product, 'cate'=>$category]);
-       
+    {      
+	   $product=product::paginate(12);	 
+       $category=category::all();
+       return view('frontend.shop',['data'=>$product, 'cate'=>$category]); 
     }
+
 
     public function product_category($cid)
     {     
-       
-       $data=product::where("cate_id",'=',$cid)->first();
-       return view('frontend.product_category',['fetch'=>$data]);
+       $category=category::all();
+       $data=product::where("cate_id",'=',$cid)->get();
+       $product=product::paginate(12);
+       return view('frontend.product_category',['fetch'=>$data, 'cate'=>$category, 'prod'=>$product]);
        
     }
 

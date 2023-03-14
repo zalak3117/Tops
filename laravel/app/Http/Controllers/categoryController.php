@@ -16,13 +16,9 @@ class categoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.add_category');
     }
 
-    function add_categorypage()
-	{
-		return view('backend.add_category');
-	}
 
     /**
      * Show the form for creating a new resource.

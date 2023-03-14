@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\category;
 use App\Models\product;
+use App\Models\cart;
+use App\Models\wishlist;
 use Hash;
 use Alert;
 
@@ -29,9 +31,30 @@ class productController extends Controller
     {      
 	   $product=product::paginate(12);	 
        $category=category::all();
-       return view('frontend.shop',['data'=>$product, 'cate'=>$category]); 
+       $cart_data=cart::where('cust_id','=',session('cust_id'))->get();
+       $total_cart = $cart_data->count();
+       $wish_data=wishlist::where('cust_id','=',session('cust_id'))->get();
+       $total_wish = $wish_data->count();
+       return view('frontend.shop',['data'=>$product, 'cate'=>$category, 'total_cart'=>$total_cart, 'total_wish'=>$total_wish]); 
     }
 
+    public function random_product() 
+    {
+       $cart_data=cart::where('cust_id','=',session('cust_id'))->get();
+       $total_cart = $cart_data->count();
+       $wish_data=wishlist::where('cust_id','=',session('cust_id'))->get();
+       $total_wish = $wish_data->count();
+	   $data=product::inRandomOrder()->limit(8)->get();	
+       return view('frontend.index',['data'=>$data,'total_cart'=>$total_cart, 'total_wish'=>$total_wish]);
+       return view('frontend./',['data'=>$data]);
+    }
+
+    public function random_single($id)
+    {
+            $data=product::where("id",'=',$id)->first();
+            $fetch=product::inRandomOrder()->limit(4)->get();	
+            return view('frontend.detail_product',['fetch'=>$data,'data'=>$fetch]);
+    }
 
     public function product_category($cid)
     {     

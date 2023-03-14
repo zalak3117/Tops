@@ -38,17 +38,30 @@ class cartController extends Controller
     {
         $data=new cart;
         
-        $data->cust_id=$request->cust_id;
-        $data->prod_id=$request->prod_id;
-        $data->qty=$request->qty;
-
-        
-
-
-
-        $data->save();
-		Alert::success('success', 'add to cart');
-		return redirect('/shop');
+        $prod_id=$request->prod_id;
+        $cust_id=$request->cust_id;
+        $cart_data=cart::where("cust_id","=",$cust_id)
+        ->where("prod_id","=",$prod_id)->first();
+        if($cart_data)
+        {
+            $qty=$cart_data->qty;
+            $updated_qty=$qty+1;
+            $id=$cart_data->id;
+            $cart=cart::find($id);
+            $cart->qty=$updated_qty;
+            $cart->save();
+            Alert::success('success', 'Product added to cart');
+            return redirect('/shop'); 
+        }
+        else
+        {
+            $data->prod_id=$prod_id;
+            $data->cust_id=$cust_id;
+            $data->qty=$request->qty;
+            $data->save();
+            Alert::success('success', 'Product added to cart');
+            return redirect('/shop');    
+        }
 
     }
 
@@ -61,7 +74,9 @@ class cartController extends Controller
                ->join('customers', 'carts.cust_id', '=', 'customers.id')
                ->where('customers.id','=',session('cust_id'))
                ->get(['products.*','customers.*','carts.*']);
-        return view('frontend.cart',['fetch'=>$cart]);
+        $cart_data=cart::where('cust_id','=',session('cust_id'))->get();
+        $total_cart = $cart_data->count();
+        return view('frontend.cart',['fetch'=>$cart, 'total_cart'=>$total_cart]);
 	}
 
     /**
@@ -81,11 +96,14 @@ class cartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $cart=cart::join('products','carts.prod_id','=', 'products.id')
+         ->join('customers', 'carts.cust_id', '=', 'customers.id')->get(['products.*', 'customers.*', 'carts.*']);
+        return view('backend.cart_details',['fetch'=>$cart]);
     }
 
+    
     /**
      * Show the form for editing the specified resource.
      *

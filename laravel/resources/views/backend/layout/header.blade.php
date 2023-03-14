@@ -11,6 +11,7 @@
     <link href="{{url('backend/assets/vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet" />
     <link href="{{url('backend/assets/vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" />
     <link href="{{url('backend/assets/vendors/themify-icons/css/themify-icons.css')}}" rel="stylesheet" />
+    <link href="{{url('backend/assets/vendors/DataTables/datatables.min.css')}}" rel="stylesheet" />
     <!-- PLUGINS STYLES-->
     <link href="{{url('backend/assets/vendors/jvectormap/jquery-jvectormap-2.0.3.css')}}" rel="stylesheet" />
     <!-- THEME STYLES-->
@@ -209,9 +210,7 @@
                         </a>
                     </li>
                     <li class="heading">FEATURES</li>
-                    <li>
-                        <a href="javascript:;"><i class="sidebar-item-icon fa fa-bookmark"></i>
-                            <span class="nav-label">Basic UI</span><i class="fa fa-angle-left arrow"></i></a>
+                    <li>                           
                         <ul class="nav-2-level collapse">
                             <li>
                                 <a href="colors">Colors</a>
@@ -268,37 +267,38 @@
                             
                         </ul>
                     </li>
+                    <li>
+                        <a href="javascript:;"><i class="sidebar-item-icon fa fa-edit"></i>
+                            <span class="nav-label">Blog</span><i class="fa fa-angle-left arrow"></i></a>
+                        <ul class="nav-2-level collapse">
+                            <li>
+                                <a href="add_blog">Add Blog</a>
+                            </li>
+                            <li>
+                                <a href="manage_blog">Manage Blog</a>
+                            </li>
+                            
+                        </ul>
+                    </li>
                     
                     
                     
                     
                     <li class="heading">PAGES</li>
                     <li>
-                        <a href="javascript:;"><i class="sidebar-item-icon fa fa-envelope"></i>
-                            <span class="nav-label">Mailbox</span><i class="fa fa-angle-left arrow"></i></a>
-                        <ul class="nav-2-level collapse">
-                            <li>
-                                <a href="mailbox">Inbox</a>
-                            </li>
-                            <li>
-                                <a href="mail_view">Mail view</a>
-                            </li>
-                            <li>
-                                <a href="mail_compose">Compose mail</a>
-                            </li>
-                        </ul>
+                        <a href="customer_details"><i class="sidebar-item-icon fa fa-table"></i>
+                            <span class="nav-label">Customer Details</span></a>
+                        
                     </li>
                     <li>
-                        <a href="javascript:;"><i class="sidebar-item-icon fa fa-table"></i>
-                            <span class="nav-label">Tables</span><i class="fa fa-angle-left arrow"></i></a>
-                        <ul class="nav-2-level collapse">
-                            <li>
-                                <a href="table_basic">Basic Tables</a>
-                            </li>
-                            <li>
-                                <a href="datatables">Datatables</a>
-                            </li>
-                        </ul>
+                        <a href="cart_details"><i class="sidebar-item-icon fa fa-table"></i>
+                            <span class="nav-label">Cart Details</span></a>
+                        
+                    </li>
+                    <li>
+                        <a href="order_details"><i class="sidebar-item-icon fa fa-table"></i>
+                            <span class="nav-label">Order Details</span></a>
+                        
                     </li>
                     
                     <li>

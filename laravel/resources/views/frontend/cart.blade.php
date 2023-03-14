@@ -50,7 +50,7 @@
 					          	</div>
 					          </td>
 						        
-						        <td class="total">$4.90</td>
+						        <td class="total">{{$d->dis_price * $d->qty}}</td>
 								
 						      </tr><!-- END TR-->
 							  @endforeach
@@ -101,7 +101,7 @@
     					<h3>Cart Totals</h3>
     					<p class="d-flex">
     						<span>Subtotal</span>
-    						<span>$20.60</span>
+    						<span></span>
     					</p>
     					<p class="d-flex">
     						<span>Delivery</span>

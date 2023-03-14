@@ -79,9 +79,15 @@
 	          <li class="nav-item"><a href="{{url('/about')}}" class="nav-link"><b>About</b></a></li>
 	          <li class="nav-item"><a href="{{url('/blog')}}" class="nav-link">Blog</a></li>
 	          <li class="nav-item"><a href="{{url('/contact')}}" class="nav-link">Contact</a></li>
-			  <li class="nav-item cta cta-colored"><a href="{{url('/cart')}}" class="nav-link"><span class="icon-shopping_cart">[0]</span></a></li>
+			  <li class="nav-item cta cta-colored"><a href="{{url('/cart')}}" class="nav-link"><span class="icon-shopping_cart">
+				[@if(!empty($total_cart))
+				{{$total_cart}}
+				@endif]</span></a></li>
 			  @if(session()->has('cust_id'))
-			  <li class="nav-item cta cta-colored"><a href="{{url('/wishlist')}}" class="nav-link"><span class="icon-heart">[0]</span></a></li>
+			  <li class="nav-item cta cta-colored"><a href="{{url('/wishlist')}}" class="nav-link"><span class="icon-heart">
+				[@if(!empty($total_wish))
+				{{$total_wish}}
+				@endif]</span></a></li>
 			  <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Welcome {{session('name')}}..!</a>
               <div class="dropdown-menu" aria-labelledby="dropdown04">

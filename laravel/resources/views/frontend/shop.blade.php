@@ -45,32 +45,29 @@
 		    						<p class="price"><span class="mr-2 price-dc">₹{{$d->main_price}}</span><span class="price-sale">₹{{$d->dis_price}}</span></p>
 		    					</div>
 	    					</div>
-							
-							
-
 	    					<div class="bottom-area d-flex px-3">
 	    						<div class="m-auto d-flex">
-								<form action="{{url('shop/'.$d->id)}}" method="post" enctype="multipart/form-data">
-            @csrf
-			<input type="hidden" id="cust_id" name="cust_id" value="{{session('cust_id')}}">
-			<input type="hidden" id="prod_id" name="prod_id" value="{{$d->id}}">
-			<input type="hidden" id="qty" name="qty" value="1">
+									<form action="{{url('detail_product/'.$d->id)}}" method="post" enctype="multipart/form-data">
+           							 	@csrf
+										<input type="hidden" id="cust_id" name="cust_id" value="{{session('cust_id')}}">
+										<input type="hidden" id="prod_id" name="prod_id" value="{{$d->id}}">
+										<input type="hidden" id="qty" name="qty" value="1">
 
-			<div class="m-auto d-flex">
-			<a>	<button class="cartbtn"><i class="ion-ios-cart"></i></button> </a>
-			</div>
-</form>
+											<div class="m-auto d-flex">
+												<a>	<button class="cartbtn"><i class="ion-ios-cart"></i></button> </a>
+											</div>
+									</form>
 
-<form action="{{url('shop/'.$d->id)}}" method="post" enctype="multipart/form-data">
-            @csrf
-			<input type="hidden" id="cust_id" name="cust_id" value="{{session('cust_id')}}">
-			<input type="hidden" id="prod_id" name="prod_id" value="{{$d->id}}">
-			<input type="hidden" id="qty" name="qty" value="1">
+									<form action="{{url('shop/'.$d->id)}}" method="post" enctype="multipart/form-data">
+										@csrf
+										<input type="hidden" id="cust_id" name="cust_id" value="{{session('cust_id')}}">
+										<input type="hidden" id="prod_id" name="prod_id" value="{{$d->id}}">
+										<input type="hidden" id="qty" name="qty" value="1">
 
-			<div class="m-auto d-flex">
-			<a>	<button class="cartbtn"><i class="ion-ios-heart"></i></button> </a>
-			</div>
-</form>
+											<div class="m-auto d-flex">
+												<a>	<button class="cartbtn"><i class="ion-ios-heart"></i></button> </a>
+											</div>
+									</form>
     							</div>
     						</div>
 
@@ -88,7 +85,7 @@
                 <li><a href="#">2</a></li>
                 <li><a href="#">3</a></li>
                 <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
+                <li><a href="#">5</a></li>		
                 <li><a href="#">&gt;</a></li> -->
 				<li>{{ $data->links()}}</li>
               </ul>

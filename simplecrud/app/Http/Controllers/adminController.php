@@ -31,17 +31,15 @@ class adminController extends Controller
     public function register(Request $request)
     {
         $data=new admin;
-		$data->name=$request->name;
-        $data->email=$request->email;
-		$data->password=Hash::make($request->password);
+		$data->name=$request->get('name');
+        $data->email=$request->get('email');
+		$data->password=Hash::make($request->get('password'));
 
 		$data->save();
-        echo "
-							<script> alert('register Success');
-							window.location='profile';
-							</script>";
 
-		return back();
+        echo "<h1> Data inserted </h1>";
+
+		//return back();
     }
 
     function login(Request $request)
@@ -86,32 +84,44 @@ class adminController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show()
     {
-        //
+        $admin=admin :: all();
+        return view ('show',['data'=>$admin]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $data=admin::where("id",'=',$id)->first();
+        return view('edit',['fetch'=>$data]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $data=admin::find($id);
+        $data->name=$request->name;
+
+        $data->update();
+        echo "update success";
+        return redirect ('/show');
+        
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $data=admin::find($id);
+
+        $data->delete();
+        echo "delete success";
+        return redirect ('/show');
     }
 }

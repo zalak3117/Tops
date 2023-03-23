@@ -29,3 +29,11 @@ Route::get('/login', function () {
 Route::post('/register',[adminController::class,'register']);
 
 Route::post('/login',[adminController::class,'login']);
+
+Route::get('/show',[adminController::class,'show']);
+
+Route::get('/edit/{id}',[adminController::class,'edit']);
+
+Route::post('/edit/{id}',[adminController::class,'update']);
+
+Route::get('/delete/{id}',[adminController::class,'destroy']);

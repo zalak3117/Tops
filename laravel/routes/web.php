@@ -156,4 +156,4 @@ Route::get('/customer_details',[customerController::class,'show']);
 Route::get('/cart_details',[cartController::class,'show']);
 
 Route::get('/logout',[adminController::class,'logout']);
-});
+});  
